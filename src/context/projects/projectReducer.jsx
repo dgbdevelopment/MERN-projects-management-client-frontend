@@ -25,10 +25,10 @@ export default (state, action) => {
       ...state, errorForm: true
     }
     case ACTUAL_PROJECT: return {
-      ...state, actualProject: state.projectList.filter(project=> project.id===action.payload)[0]
+      ...state, actualProject: state.projectList.filter(project=> project._id===action.payload)[0]
     }
     case DELETE_PROJECT: return {
-      ...state, projectList: state.projectList.filter(project => project.id !== action.payload),
+      ...state, projectList: state.projectList.filter(project => project._id !== action.payload),
       actualProject: null
     }
     default:

@@ -1,10 +1,11 @@
+//PROJECT CONTEXT
 export const NEW_PROJECT_FORM = 'NEW_PROJECT_FORM';
 export const LOAD_PROJECT_LIST = "LOAD_PROJECT_LIST";
 export const NEW_PROJECT = "NEW_PROJECT";
 export const ERROR_FORM = "ERROR_FORM";
 export const ACTUAL_PROJECT = "ACTUAL_PROJECT";
 export const DELETE_PROJECT = "DELETE_PROJECT";
-
+//TASK CONTEXT
 export const SHOW_PROJECT_TASK_LIST = "SHOW_TASK_LIST";
 export const NEW_TASK = "NEW_TASK";
 export const DELETE_TASK = "DELETE_TASK";
@@ -12,3 +13,13 @@ export const ERROR_TASK = "ERROR_TASK";
 export const MODIFY_DONE = "MODIFY_DONE";
 export const ACTUAL_TASK = "ACTUAL_TASK";
 export const EDIT_TASK = "EDIT_TASK";
+//ALERT CONTEXT
+export const SHOW_ALERT = "SHOW_ALERT";
+export const HIDE_ALERT = "HIDE_ALERT";
+//AUTH CONTEXT
+export const REGISTER_SUCCESS = "REGISTER_SUCCESS";
+export const REGISTER_ERROR = "REGISTER_ERROR";
+export const LOGIN_SUCCESS = "LOGIN_SUCCESS";
+export const LOGIN_ERROR = "LOGIN_ERROR";
+export const GET_USER = "GET_USER";
+export const LOGOUT = "LOGOUT";

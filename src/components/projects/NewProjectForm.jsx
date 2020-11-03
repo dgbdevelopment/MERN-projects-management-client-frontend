@@ -1,15 +1,13 @@
-import React, { useState, useContext, useEffect } from "react";
+import React, { useState, useContext } from "react";
 import projectContext from "context/projects/projectContext";
-import { v4 as uuidv4 } from "uuid";
 import Error from 'components/errors/Error';
 
 
 const NewProjectForm = () => {
   const [project, setProject] = useState({
-    id: "",
     name: ""
   });
-  const { id, name } = project;
+  const { name } = project;
 
   const context = useContext(projectContext);
 
@@ -19,19 +17,12 @@ const NewProjectForm = () => {
   const handleChange = (e) =>
     setProject({ ...project, [e.target.name]: e.target.value });
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     if (name.trim() === "") return showError();
-    setProject({...project, id:uuidv4()})
+    await newProject(project);
+    setProject({name: ''})
   };
-
-  useEffect(() => {
-    if (id.trim()!=="") {
-      newProject(project)
-      setProject({id:"", name:""})
-    }
-  // eslint-disable-next-line
-  },[id])
 
   return (
     <div>

@@ -3,7 +3,6 @@ import {
   NEW_TASK,
   DELETE_TASK,
   ERROR_TASK,
-  MODIFY_DONE,
   ACTUAL_TASK,
   EDIT_TASK,
 } from "types/index";
@@ -11,24 +10,42 @@ import {
 const taskReducer = (state, action) => {
   switch (action.type) {
     case SHOW_PROJECT_TASK_LIST:
-      return { ...state, projectTaskList: state.taskList.filter(task => task.projectId === action.payload) };
+      return {
+        ...state,
+        projectTaskList: action.payload,
+        actualTask: null,
+        errorTask: false,
+      };
     case NEW_TASK:
-      return { ...state, taskList: [action.payload,...state.taskList], errorTask: false }
+      return {
+        ...state,
+        projectTaskList: [action.payload, ...state.projectTaskList],
+        errorTask: false,
+      };
     case DELETE_TASK:
-      return { ...state, taskList: state.taskList.filter(task => task.id !== action.payload) }
+      return {
+        ...state,
+        projectTaskList: state.projectTaskList.filter(
+          (task) => task._id !== action.payload
+        ),
+        actualTask: null,
+      };
     case ERROR_TASK:
-      return { ...state, errorTask: true };
-    case MODIFY_DONE:
-      return { ...state, taskList: state.taskList.map(task => task.id === action.payload.id ? action.payload : task)}
+      return { ...state, errorTask: true };      
     case ACTUAL_TASK:
-      return { ...state, actualTask: state.taskList.filter(task => task.id === action.payload)[0] };
+      return {
+        ...state,
+        actualTask: state.projectTaskList.filter(
+          (task) => task._id === action.payload
+        )[0],
+      };
     case EDIT_TASK:
       return {
         ...state,
-        taskList: state.taskList.map((task) =>
-          task.id === action.payload.id ? action.payload : task
+        projectTaskList: state.projectTaskList.map((task) =>
+          task._id === action.payload._id ? action.payload : task
         ),
-        actualTask: null 
+        actualTask: null,
       };
     default:
       return state;

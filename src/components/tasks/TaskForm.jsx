@@ -1,5 +1,4 @@
 import React, { useState, useContext, useEffect } from "react";
-import { v4 as uuidv4 } from 'uuid';
 import Error from 'components/errors/Error';
 
 import projectContext from "context/projects/projectContext";
@@ -13,7 +12,6 @@ const TaskForm = () => {
   const { newTask, showErrorTask, errorTask, actualTask, editTask } = task_context;
 
   const [task, setTask] = useState({
-    id:'',
     taskname: '',
     done: false,
     projectId: ''
@@ -29,8 +27,7 @@ const TaskForm = () => {
       cleanTask();
       return;
     }
-    task.id = uuidv4();
-    task.projectId = actualProject.id;
+    task.projectId = actualProject._id;
     newTask(task);
     cleanTask();
   }
@@ -41,7 +38,6 @@ const TaskForm = () => {
 
   const cleanTask = () => {
     setTask({
-      id: "",
       taskname: "",
       done: false,
       projectId: ""

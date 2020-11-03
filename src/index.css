@@ -90,9 +90,11 @@ a {
   background-color: transparent;
 }
 .btn-eliminar {
+  margin-top: 4rem;
   background-color: var(--blanco);
   color: var(--gris2);
   font-size: 1.6rem;
+  border: 1px solid var(--gris3);
 }
 .btn-eliminar:hover {
   background-color: var(--gris2);
@@ -334,31 +336,36 @@ aside {
   top: 0;
   left: 0;
   padding: 1rem 3rem;
-  border-radius: 1rem;
-  font-family: var(--headingFont);
-  font-weight: 600;
-  text-transform: uppercase;
-  font-size: 2.2rem;
+  font-family: var(--textFont);
+  font-weight: 400;
+  font-size: 1.8rem;
   text-align: center;
   width: 100%;
 }
 @media (min-width: 768px) {
   .alerta {
-    width: auto;
-    top: 30px;
-    right: 10px;
-    left: auto;
+    width: 80%;
+    top: 2rem;
+    left: 50%;
+    transform: translateX(-50%);
   }
 }
-
-.alerta-ok {
+.alerta-ok p, .alerta-error p{
+  padding: 1.5rem;
+  margin-top: 1rem;
+  border-radius: 1rem;
+}
+.alerta-ok p {
   background-color: rgb(109, 211, 109);
   color: rgb(2, 103, 2);
 }
-.alerta-error {
+.alerta-error p{
   background-color: rgb(230, 78, 78);
   color: var(--blanco);
 }
 .text-center{
   text-align: center;
+}
+.cerrar-sesion{
+  color: var(--blanco);
 }

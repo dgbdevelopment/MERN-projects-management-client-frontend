@@ -4,11 +4,11 @@ import taskContext from "context/tasks/taskContext";
 const Task = ({ task }) => {
 
   const task_context = useContext(taskContext);
-  const { deleteTask, modifyDone, setActualTask } = task_context;
+  const { deleteTask, editTask, setActualTask } = task_context;
 
   const toggleDone = () => {
     task.done = !task.done;
-    modifyDone(task);
+    editTask(task);
   }
 
   return (
@@ -26,10 +26,10 @@ const Task = ({ task }) => {
         )}
       </div>
       <div className="acciones">
-        <button type="button" className="btn btn-primario" onClick={()=> setActualTask(task.id)}>
+        <button type="button" className="btn btn-primario" onClick={()=> setActualTask(task._id)}>
           Editar
         </button>
-        <button type="button" className="btn btn-secundario" onClick={()=> deleteTask(task.id)}>
+        <button type="button" className="btn btn-secundario" onClick={()=> deleteTask(task._id)}>
           Eliminar
         </button>
       </div>

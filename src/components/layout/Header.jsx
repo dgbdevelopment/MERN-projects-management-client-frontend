@@ -1,13 +1,26 @@
-import React from "react";
+import React, { useContext } from "react";
+import projectContext from "context/projects/projectContext";
 
-const Header = () => {
+const Header = (props) => {
+
+  const { user, logoutUser } = props
+  
+  const { setActualProject } = useContext(projectContext);
+
+  const handleClick = () => {
+    setActualProject(null)
+    logoutUser();
+  }
+
   return (
     <header className="app-header">
       <p className="nombre-usuario">
-        Hola <span>David</span>
+        Usuario: <span>{user?.username}</span>
       </p>
       <nav className="nav-principal">
-        <a href="#!">Cerrar Sesión</a>
+        <button className="btn btn-blank cerrar-sesion" onClick={handleClick}>
+          Cerrar Sesión
+        </button>
       </nav>
     </header>
   );

@@ -7,21 +7,28 @@ import NotFound from "components/errors/NotFound";
 
 import ProjectState from "context/projects/ProjectState";
 import TaskState from "context/tasks/TaskState";
+import AlertState from "context/alerts/AlertState";
+import AuthState from "context/auth/AuthState";
+
 
 function App() {
   return (
-    <ProjectState>
-      <TaskState>
-        <BrowserRouter>
-          <Switch>
-            <Route exact path="/" component={Login} />
-            <Route exact path="/new-account" component={NewAccount} />
-            <Route exact path="/projects" component={Projects} />
-            <Route component={NotFound} />
-          </Switch>
-        </BrowserRouter>
-      </TaskState>
-    </ProjectState>
+    <AlertState>
+      <AuthState>
+        <ProjectState>
+          <TaskState>
+            <BrowserRouter>
+              <Switch>
+                <Route exact path="/" component={Login} />
+                <Route exact path="/new-account" component={NewAccount} />
+                <Route exact path="/projects" component={Projects} />
+                <Route component={NotFound} />
+              </Switch>
+            </BrowserRouter>
+          </TaskState>
+        </ProjectState>
+      </AuthState>
+    </AlertState>
   );
 }
 

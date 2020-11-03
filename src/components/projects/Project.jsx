@@ -8,7 +8,7 @@ const Project = ({ project }) => {
   const { setActualProject } = context;
   return (
     <li>
-      <button type="button" className="btn btn-blank" onClick={()=>setActualProject(project.id)}>
+      <button type="button" className="btn btn-blank" onClick={()=>setActualProject(project._id)}>
         {project.name}
       </button>
     </li>
